@@ -8,7 +8,8 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "frontend": "npm start frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "postinstall": "./node_modules/bower/bin/bower install && npm run build"
   },
   "author": "",
   "license": "ISC",
