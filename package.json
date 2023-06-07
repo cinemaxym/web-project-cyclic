@@ -9,7 +9,7 @@
     "server": "nodemon app.js",
     "frontend": "npm start frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "postinstall": "./node_modules/bower/bin/bower install && npm run build"
+    "postinstall": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
