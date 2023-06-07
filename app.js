@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080 //assigns the value of the environment var
 
 app.use(express.json());
 
-const path = require('path'); 
+const path = require('path');
 
 // utility function - gets projects data
 function getProjects() {
@@ -84,15 +84,13 @@ app.put('/api', (req, res) => {
 
 
 // Serve the static files from the frontend build folder
-app.use(express.static(path.join(__dirname, "./frontend/build")));
-app.get("*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "./frontend/build/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
+
+app.use(express.static('frontend/build'));
+// Catch all routes and serve the index.html file
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
+
 
 // Starts the server on port 
 app.listen(PORT, () => console.log('Listening engaged'))
